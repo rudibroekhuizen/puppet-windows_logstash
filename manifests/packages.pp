@@ -8,9 +8,9 @@ class windows_logstash::packages {
     provider => 'chocolatey',
   }
   
-  windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
-    type    => REG_EXPAND_SZ,
-  }
+  #windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
+  #  type    => REG_EXPAND_SZ,
+  #}
   
   # Extract logstash zip file
   #exec { "Extract zip file":
