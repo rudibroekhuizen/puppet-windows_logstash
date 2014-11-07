@@ -28,11 +28,10 @@ class windows_logstash::packages {
   exec { "Extract zip file":
     command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
     path      => "C:/Program Files/7-Zip;${::path}",
-    cwd       => C:/Windows/Temp,
-    creates   => C:/ProgramData/logstash-1.4.2,
+    cwd       => "C:/Windows/Temp",
+    creates   => "C:/ProgramData/logstash-1.4.2",
     logoutput => on_failure,
     require   => File['C:/Windows/Temp/logstash-1.4.2.zip'],
-  
   }
   
 }
