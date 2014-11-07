@@ -2,6 +2,12 @@
 #
 class windows_logstash::packages {
   
+  # Copy logstash-1.4.2.zip
+  file { 'C:/Windows/Temp/logstash-1.4.2.zip':
+    source             => 'puppet:///modules/windows_role_base/logstash-1.4.2.zip',
+    source_permissions => ignore,
+  }
+  
   # Install javaruntime
   package { javaruntime:
     ensure   => installed,
