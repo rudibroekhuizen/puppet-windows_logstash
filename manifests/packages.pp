@@ -8,7 +8,7 @@ class windows_logstash::packages {
     source_permissions => ignore,
   }
   
-  # Extract logstash zip file
+  # Extract logstash zip file to c:\ProgramData
   exec { "Extract zip file":
     command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
     path      => "C:/Program Files/7-Zip;${::path}",
