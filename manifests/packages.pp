@@ -8,6 +8,16 @@ class windows_logstash::packages {
     source_permissions => ignore,
   }
   
+  # Extract logstash zip file
+  exec { "Extract zip file":
+    command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
+    path      => "C:/Program Files/7-Zip;${::path}",
+    cwd       => "C:/Windows/Temp",
+    creates   => "C:/ProgramData/logstash-1.4.2",
+    logoutput => on_failure,
+    require   => File['C:/Windows/Temp/logstash-1.4.2.zip'],
+  }
+  
   # Install javaruntime
   package { javaruntime:
     ensure   => installed,
@@ -23,15 +33,5 @@ class windows_logstash::packages {
   #windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
   #  type    => REG_EXPAND_SZ,
   #}
-  
-  # Extract logstash zip file
-  exec { "Extract zip file":
-    command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
-    path      => "C:/Program Files/7-Zip;${::path}",
-    cwd       => "C:/Windows/Temp",
-    creates   => "C:/ProgramData/logstash-1.4.2",
-    logoutput => on_failure,
-    require   => File['C:/Windows/Temp/logstash-1.4.2.zip'],
-  }
   
 }
