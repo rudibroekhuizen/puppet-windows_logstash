@@ -8,6 +8,11 @@ class windows_logstash::packages {
     provider => 'chocolatey',
   }
   
+ package { jruby-win32ole:
+    ensure   => installed,
+    provider => gem,
+  } 
+  
   #windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
   #  type    => REG_EXPAND_SZ,
   #}
