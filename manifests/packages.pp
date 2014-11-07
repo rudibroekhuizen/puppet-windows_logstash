@@ -11,7 +11,7 @@ class windows_logstash::packages {
  package { jruby-win32ole:
     ensure          => installed,
     provider        => gem,
-    install_options => [{"--install-dir" => "C:/ProgramData/logstash-1.4.2/vendor/bundle/jruby/1.9/gems"}]
+    install_options => [{"--install-dir" => "C:/ProgramData/logstash-1.4.2/vendor/bundle/jruby/1.9"}]
   } 
   
   #windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
