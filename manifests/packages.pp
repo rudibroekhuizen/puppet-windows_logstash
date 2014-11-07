@@ -2,7 +2,7 @@
 #
 class windows_logstash::packages {
   
-  # Copy logstash-1.4.2.zip
+  # Copy logstash-1.4.2.zip to Temp
   file { 'C:/Windows/Temp/logstash-1.4.2.zip':
     source             => 'puppet:///modules/windows_logstash/logstash-1.4.2.zip',
     source_permissions => ignore,
