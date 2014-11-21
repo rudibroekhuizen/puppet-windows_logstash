@@ -24,6 +24,7 @@ class windows_logstash::package {
     provider => 'chocolatey',
   }
   
+ # gem install jruby-win32ole -i C:\ProgramData\logstash-1.4.2\vendor\bundle\jruby\1.9  
  package { jruby-win32ole:
     ensure          => installed,
     provider        => gem,
