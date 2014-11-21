@@ -2,4 +2,5 @@
 #
 class windows_logstash::service {
 
-nssm install logstash C:\ProgramData\logstash.bat "agent -f logstash-16.conf"
+nssm install logstash C:\ProgramData\logstash-1.4.2\logstash.bat "agent -f logstash-16.conf"
+
