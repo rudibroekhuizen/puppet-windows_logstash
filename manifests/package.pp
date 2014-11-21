@@ -1,6 +1,6 @@
-# == Class: windows_logstash::packages
+# == Class: windows_logstash::package
 #
-class windows_logstash::packages {
+class windows_logstash::package {
   
   # Copy logstash-1.4.2.zip to Temp
   file { 'C:/Windows/Temp/logstash-1.4.2.zip':
