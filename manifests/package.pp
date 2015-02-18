@@ -10,6 +10,7 @@ class windows_logstash::package {
     source_permissions => ignore,
   }
   
+  # better solution: windows::unzip, https://forge.puppetlabs.com/counsyl/windows
   # Extract logstash zip file to c:\ProgramData
   exec { "Extract zip file":
     command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
