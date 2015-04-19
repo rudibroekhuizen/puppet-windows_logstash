@@ -35,7 +35,12 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class windows_logstash {
+class windows_logstash (
+  ){
 
+  # Install package
+  class { 'windows_logstash::package':
+    #require => Class ["windows_base::files"],
+  }
 
 }
