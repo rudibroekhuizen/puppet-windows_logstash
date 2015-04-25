@@ -9,7 +9,7 @@ class windows_logstash::package {
   #  source             => 'puppet:///modules/windows_logstash/logstash-1.4.2.zip',
   #  source_permissions => ignore,
   #}
-  download_file { 'logstash-1.4.2.tar.gz' :
+  download_file { 'logstash-1.4.2.zip' :
     url                   => 'https://download.elastic.co/logstash/logstash/logstash-1.4.2.zip',
     destination_directory => 'C:/Windows/Temp',
     #require              => File[ 'c:\temp' ],
