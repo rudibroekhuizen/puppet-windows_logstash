@@ -10,9 +10,9 @@ class windows_logstash::package {
   #  source_permissions => ignore,
   #}
   download_file { 'logstash-1.4.2.tar.gz' :
-    url                   => 'https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz',
+    url                   => 'https://download.elastic.co/logstash/logstash/logstash-1.4.2.zip',
     destination_directory => 'C:/Windows/Temp',
-    #require               => File[ 'c:\temp' ],
+    #require              => File[ 'c:\temp' ],
   }
   
   
