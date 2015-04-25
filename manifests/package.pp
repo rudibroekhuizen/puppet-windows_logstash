@@ -5,10 +5,16 @@ class windows_logstash::package {
   #https://code.google.com/p/rely-ops/source/browse/ops_logging/manifests/windows/shipper.pp
   
   # Copy logstash-1.4.2.zip to Temp
-  file { 'C:/Windows/Temp/logstash-1.4.2.zip':
-    source             => 'puppet:///modules/windows_logstash/logstash-1.4.2.zip',
-    source_permissions => ignore,
+  #file { 'C:/Windows/Temp/logstash-1.4.2.zip':
+  #  source             => 'puppet:///modules/windows_logstash/logstash-1.4.2.zip',
+  #  source_permissions => ignore,
+  #}
+  download_file { 'logstash-1.4.2.tar.gz' :
+    url                   => 'https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz',
+    destination_directory => 'C:/Windows/Temp',
+    #require               => File[ 'c:\temp' ],
   }
+  
   
   # better solution: windows::unzip, https://forge.puppetlabs.com/counsyl/windows
   # Extract logstash zip file to c:\ProgramData
