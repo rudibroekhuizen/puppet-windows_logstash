@@ -24,7 +24,7 @@ class windows_logstash::service {
 
   service { 'Logstash':
     ensure  => running,
-    require => Exec[ 'install ls service' ],
+    require => Windows_service[ 'Logstash' ],
   }
   
 }
