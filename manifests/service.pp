@@ -9,9 +9,9 @@ class windows_logstash::service {
   }
 
   exec { 'Logstash as a service':
-    command => 'c:\windows\nssm.exe install Logstash3 C:\ProgramData\logstash-1.4.2\bin\logstash.bat agent -f logstash.conf",
-    cwd     => 'c:\windows',
-    unless  => 'c:\Windows\System32\cmd.exe /c sc query logstash',
+    command => 'c:/windows/nssm.exe install Logstash3 C:\ProgramData\logstash-1.4.2\bin\logstash.bat agent -f logstash.conf",
+    cwd     => 'c:/windows',
+    unless  => 'c:/Windows/System32/cmd.exe /c sc query logstash',
     require => Package[ 'nssm' ]
   }
 
