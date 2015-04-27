@@ -2,7 +2,7 @@
 #
 class windows_logstash::service {
 
-  # Install Logstash as a service using jordan/windows_service module
+  # Install Logstash as a service using jordan/windows_service module, 'sc delete Logstash' te remove it manually 
   windows_service { 'Logstash':
     ensure      => present,
     description => 'Logstash',
