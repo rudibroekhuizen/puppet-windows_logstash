@@ -2,29 +2,22 @@
 #
 class windows_logstash::service {
 
-  # Install Logstash as a service using jordan/windows_service module, 'sc delete Logstash' te remove it manually 
-  windows_service { 'Logstash':
-    ensure      => present,
-    description => 'Logstash',
-    binary      => 'C:/ProgramData/logstash-1.4.2/bin/logstash.bat "agent -f logstash.conf"',
+ # Install Non-Sucking Service Manager
+  package { nssm:
+    ensure   => installed,
+    provider => 'chocolatey'
   }
 
-  # Install Non-Sucking Service Manager
-  #package { nssm:
-  #  ensure   => installed,
-  #  provider => 'chocolatey',
-  #}
+  exec { 'Logstash as a service':
+    command => 'c:\windows\nssm.exe install Logstash3 C:\ProgramData\logstash-1.4.2\bin\logstash.bat agent -f logstash.conf",
+    cwd     => 'c:\windows',
+    unless  => 'c:\Windows\System32\cmd.exe /c sc query logstash',
+    require => Package[ 'nssm' ]
+  }
 
-  #exec { 'install ls service':
-  #  command => 'c:\windows\nssm.exe install Logstash C:\ProgramData\logstash-1.4.2\bin\logstash.bat "agent -f logstash.conf",
-  #  cwd     => 'c:\windows',
-  #  unless  => 'c:\Windows\System32\cmd.exe /c sc query logstash',
-  #  require => File[ 'nssm', 'c:\logstash\logstash.bat' ],
-  #}
-
-  service { 'Logstash':
+  service { 'Logstash3':
     ensure  => running,
-    require => Windows_service[ 'Logstash' ],
+    require => Exec[ 'Logstash as a service' ]
   }
   
 }
