@@ -3,7 +3,7 @@
 class windows_logstash::service {
 
   # Install Logstash as a service using jordan/windows_service module
-  windows_service { 'Logstash1':
+  windows_service { 'Logstash':
     ensure      => present,
     description => 'Logstash',
     binary      => 'C:/ProgramData/logstash-1.4.2/bin/logstash.bat "agent -f logstash.conf"',
