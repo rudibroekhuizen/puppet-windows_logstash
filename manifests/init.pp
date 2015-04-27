@@ -42,5 +42,11 @@ class windows_logstash (
   class { 'windows_logstash::package':
     #require => Class ["windows_base::files"],
   }
+  
+  # Install Logstash as a service
+  class { 'windows_logstash::service':
+    require => Class ["windows_base::package"],
+  }
+
 
 }
