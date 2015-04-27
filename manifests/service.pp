@@ -2,13 +2,10 @@
 #
 class windows_logstash::service {
 
-windows_service { 'test_service':
-  ensure       => present,
-  description  => 'test service description', #Optional
-  display_name => 'Test Service',             #Defaults to resource title
-  user         => 'domain\user',              #Optional
-  password     => 'supersecretpassword',      #Optional
-  binary       => 'c:\testbin.exe',
+windows_service { 'Logstash':
+  ensure      => present,
+  description => 'logstash',
+  binary      => 'C:\ProgramData\logstash-1.4.2\bin\logstash.bat "agent -f logstash.conf',
 }
 
   # Install Non-Sucking Service Manager
