@@ -24,7 +24,7 @@ class windows_logstash::package {
     cwd       => "C:/ProgramData",
     creates   => "C:/ProgramData/logstash-1.4.2",
     logoutput => on_failure,
-    require   => File['C:/Windows/Temp/logstash-1.4.2.zip'],
+    require   => Download_file['logstash-1.4.2.zip'],
   }
   
   # Install javaruntime
