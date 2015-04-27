@@ -6,7 +6,7 @@ class windows_logstash::service {
   windows_service { 'Logstash':
     ensure      => present,
     description => 'logstash',
-    binary      => 'C:/ProgramData/logstash-1.4.2/bin/logstash.bat "agent -f logstash.conf',
+    binary      => 'C:/ProgramData/logstash-1.4.2/bin/logstash.bat "agent -f logstash.conf"',
   }
 
   # Install Non-Sucking Service Manager
