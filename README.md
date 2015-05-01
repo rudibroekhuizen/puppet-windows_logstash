@@ -15,9 +15,7 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+Install Logstash on Windows.
 
 ## Module Description
 
@@ -40,8 +38,7 @@ management, etc.) this is the time to mention it.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+This module assumes you use windows_base to set up your system with Puppet and base software, like 7-zip, which is need in this module. All required modules are set up by windows_base module.
 
 ### Beginning with windows_logstash
 
