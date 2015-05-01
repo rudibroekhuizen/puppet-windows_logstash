@@ -4,7 +4,7 @@ class windows_logstash::package {
   
   # Install javaruntime
   package { javaruntime:
-    ensure   => 7.0.75,
+    ensure   => '7.0.75',
     provider => 'chocolatey',
   }
   
