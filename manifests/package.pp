@@ -8,12 +8,6 @@ class windows_logstash::package {
     provider => 'chocolatey',
   }
   
-  # Install 7zip
-  package { 7zip:
-    ensure   => installed,
-    provider => 'chocolatey',
-  }
-  
   # Download logstash using opentable/download_file module
   download_file { 'logstash-1.4.2.zip' :
     url                   => 'http://download.elastic.co/logstash/logstash/logstash-1.4.2.zip',
