@@ -12,11 +12,9 @@ class windows_logstash::package {
   download_file { 'logstash-1.4.2.zip' :
     url                   => 'http://download.elastic.co/logstash/logstash/logstash-1.4.2.zip',
     destination_directory => 'C:/Windows/Temp',
-    #require              => File[ 'c:\temp' ],
   }
   
-  # Extract logstash zip file to c:\ProgramData
-  # To try: windows::unzip, https://forge.puppetlabs.com/counsyl/windows
+  # Extract logstash zip file to c:\ProgramData. To try: windows::unzip, https://forge.puppetlabs.com/counsyl/windows
   exec { "Extract zip file":
     command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
     path      => "C:/Program Files/7-Zip;${::path}",
