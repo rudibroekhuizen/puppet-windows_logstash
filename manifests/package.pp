@@ -2,22 +2,21 @@
 #
 class windows_logstash::package {
   
-  #https://code.google.com/p/rely-ops/source/browse/ops_logging/manifests/windows/shipper.pp
+  # Install javaruntime
+  package { javaruntime:
+    ensure   => 7.0.75,
+    provider => 'chocolatey',
+  }
   
-  # Copy logstash-1.4.2.zip to Temp
-  #file { 'C:/Windows/Temp/logstash-1.4.2.zip':
-  #  source             => 'puppet:///modules/windows_logstash/logstash-1.4.2.zip',
-  #  source_permissions => ignore,
-  #}
+  # Download logstash using opentable/download_file module
   download_file { 'logstash-1.4.2.zip' :
     url                   => 'http://download.elastic.co/logstash/logstash/logstash-1.4.2.zip',
     destination_directory => 'C:/Windows/Temp',
     #require              => File[ 'c:\temp' ],
   }
   
-  
-  # better solution: windows::unzip, https://forge.puppetlabs.com/counsyl/windows
   # Extract logstash zip file to c:\ProgramData
+  # To try: windows::unzip, https://forge.puppetlabs.com/counsyl/windows
   exec { "Extract zip file":
     command   => "7z.exe x -y \"c:\\Windows\\Temp\\logstash-1.4.2.zip\"",
     path      => "C:/Program Files/7-Zip;${::path}",
@@ -26,13 +25,7 @@ class windows_logstash::package {
     logoutput => on_failure,
     require   => Download_file['logstash-1.4.2.zip'],
   }
-  
-  # Install javaruntime
-  package { javaruntime:
-    ensure   => installed,
-    provider => 'chocolatey',
-  }
-  
+
  # gem install jruby-win32ole -i C:\ProgramData\logstash-1.4.2\vendor\bundle\jruby\1.9  
  package { jruby-win32ole:
     ensure          => installed,
@@ -41,8 +34,9 @@ class windows_logstash::package {
     require         => Exec['Extract zip file'],
   } 
   
-  #windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
-  #  type    => REG_EXPAND_SZ,
-  #}
+  # Set JAVA_HOME
+  windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
+    type => REG_EXPAND_SZ,
+  }
   
 }
