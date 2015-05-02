@@ -7,6 +7,11 @@ class windows_logstash::package {
     ensure   => '7.0.75',
     provider => 'chocolatey',
   }
+
+  # Set JAVA_HOME
+  windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
+    type => REG_EXPAND_SZ,
+  }
   
   # Download logstash using opentable/download_file module
   download_file { 'logstash-1.4.2.zip' :
@@ -31,10 +36,5 @@ class windows_logstash::package {
     install_options => [{"--install-dir" => "C:/ProgramData/logstash-1.4.2/vendor/bundle/jruby/1.9"}],
     require         => Exec['Extract zip file'],
   } 
-  
-  # Set JAVA_HOME
-  windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
-    type => REG_EXPAND_SZ,
-  }
   
 }
