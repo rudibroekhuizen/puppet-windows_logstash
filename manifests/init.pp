@@ -47,5 +47,9 @@ class windows_logstash (
     require => Class ["windows_logstash::package"],
   }
 
+  # Apply other config stuff
+  class { 'windows_logstash::config':
+  }
+ 
 
 }
