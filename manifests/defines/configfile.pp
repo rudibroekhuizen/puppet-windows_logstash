@@ -1,6 +1,6 @@
 #
 #
-define logstash::configfile(
+define windows_logstash::configfile (
   $source = undef,
   $order  = 10,
 ) {
