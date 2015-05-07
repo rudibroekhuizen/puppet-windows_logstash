@@ -1,7 +1,7 @@
 # == Define: windows_logstash::defines::configfile
 #
 define windows_logstash::defines::configfile (
-  $content = template("windows_logstash/logstash.conf.erb"),
+  $content = undef,
 ) {
 
   file { $title:
