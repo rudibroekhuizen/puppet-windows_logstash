@@ -3,7 +3,9 @@
 class windows_logstash::config {
 
   # Create a basic Logstash config file logstash.conf. Logstash will apply every file in the conf.d directory.
-  windows_logstash::defines::configfile { 'logstash10.conf': }
+  windows_logstash::defines::configfile { 'logstash10.conf': 
+    source => template("windows_logstash/logstash.conf.erb")
+  }
     
   # Cleanup jffi*.tmp files, caused by jruby bug, see https://github.com/jruby/jruby/issues/1237
   tidy { 'jffi_tmp':
