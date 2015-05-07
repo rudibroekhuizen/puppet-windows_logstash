@@ -1,13 +1,13 @@
+# == Define: windows_logstash::defines::configfile
 #
-#
-define windows_logstash::configfile (
-  $source = undef,
-  $order  = 10,
+define windows_logstash::defines::configfile (
+  $content = template("windows_logstash/logstash.conf.erb"),
 ) {
 
-  file { "logstash.conf":
-    path => C:/ProgramData/logstash-1.4.2/conf.d/logstash.conf,
-    content => "input",
+  file { $title:
+    ensure  => present,
+    path    => "C:/ProgramData/logstash-1.4.2/conf.d/${title}",
+    content => $content,
   }
 
 }
