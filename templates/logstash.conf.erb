@@ -1,0 +1,16 @@
+input {
+  generator{
+    lines => [
+      '{"@message": {"Logstash running as a service":true}}',
+      '{"@message": {"Windows managed by Puppet":true}}'
+      ]
+    codec => "json"
+    count => 1
+  }
+}
+
+output {
+  file {
+    path => "C:/Windows/Temp/logstash.output"
+  }
+}
