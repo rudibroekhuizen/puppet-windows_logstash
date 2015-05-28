@@ -1,10 +1,5 @@
 input {
   generator{
-    lines => [
-      '{"@message": {"Logstash running as a service":true}}',
-      '{"@message": {"Windows managed by Puppet":true}}'
-      ]
-    codec => "json"
     count => 1
   }
 }
