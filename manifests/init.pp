@@ -37,7 +37,8 @@
 #
 class windows_logstash (
   $configfile_hash = { 'example' => { content => "input { generator { count => 1 } } output { file { path => "C:/Windows/Temp/logstash.output" } }"
-                                    }
+                                    },
+                     },
   ){
 
   # Install package
