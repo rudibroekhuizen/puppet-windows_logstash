@@ -2,12 +2,14 @@
 #
 define windows_logstash::defines::configfile (
   $content = undef,
+  $source  = undef,
 ) {
 
   file { $title:
     ensure  => present,
     path    => "C:/ProgramData/logstash-1.4.2/conf.d/${title}",
     content => $content,
+    source  => $source,
   }
 
 }
