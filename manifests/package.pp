@@ -30,11 +30,11 @@ class windows_logstash::package {
   }
 
   # gem install jruby-win32ole -i C:\ProgramData\logstash-1.4.2\vendor\bundle\jruby\1.9  
-  package { jruby-win32ole:
-    ensure          => installed,
-    provider        => gem,
-    install_options => [{"--install-dir" => "C:/ProgramData/logstash-1.4.2/vendor/bundle/jruby/1.9"}],
-    require         => Exec['Extract zip file'],
-  } 
+  #package { jruby-win32ole:
+  #  ensure          => installed,
+  #  provider        => gem,
+  #  install_options => [{"--install-dir" => "C:/ProgramData/logstash-1.4.2/vendor/bundle/jruby/1.9"}],
+  #  require         => Exec['Extract zip file'],
+  #} 
   
 }
