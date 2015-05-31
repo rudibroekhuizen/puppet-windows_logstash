@@ -36,8 +36,8 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class windows_logstash (
-  $configfile_hash = { 'example' => { content => 'input { generator { count => 1 } } output { file { path => "C:/Windows/Temp/logstash.output" } }'
-                                    },
+  $configfile_hash = { 'logstash.conf' => { content => 'input { generator { count => 1 } } output { file { path => "C:/Windows/Temp/logstash.output" } }'
+                                          },
                      },
   ){
 
