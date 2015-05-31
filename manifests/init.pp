@@ -53,8 +53,8 @@ class windows_logstash (
   }
  
   # Create logstash configfiles
-    class { 'windows_logstash::configfile':
-      require => Class ["windows_logstash::config"],
-    }
+  class { 'windows_logstash::configfile':
+    require => Class ["windows_logstash::config"],
+  }
 
 }
