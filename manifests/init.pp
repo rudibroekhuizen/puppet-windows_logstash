@@ -44,19 +44,21 @@ class windows_logstash (
   # Install package
   class { 'windows_logstash::package':
   }
-  
-  # Install Logstash as a service
-  class { 'windows_logstash::service':
-    require => Class ["windows_logstash::package"],
-  }
 
   # Apply other config stuff
   class { 'windows_logstash::config':
+    require => Class ["windows_logstash::package"],
   }
- 
+  
   # Create logstash configfiles
   class { 'windows_logstash::configfile':
     require => Class ["windows_logstash::config"],
   }
+
+  # Install Logstash as a service
+  class { 'windows_logstash::service':
+    require => Class ["windows_logstash::configfile"],
+  }
+
 
 }
