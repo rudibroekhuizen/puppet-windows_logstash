@@ -6,10 +6,11 @@ define windows_logstash::defines::configfile (
 ) {
 
   file { $title:
-    ensure  => present,
-    path    => "C:/ProgramData/logstash-1.4.2/conf.d/${title}",
-    content => $content,
-    source  => $source,
+    ensure             => present,
+    path               => "C:/ProgramData/logstash-1.4.2/conf.d/${title}",
+    source_permissions => ignore,
+    content            => $content,
+    source             => $source,
   }
 
 }
