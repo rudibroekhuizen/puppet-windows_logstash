@@ -12,7 +12,7 @@ class windows_logstash::package {
   registry::value { 'JAVA_HOME':
     key   => 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
     value => 'JAVA_HOME',
-    type  => 'expand_string',
+    type  => 'expand',
     data  => '%ProgramFiles%\Java\jre7',
   }
   #windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
