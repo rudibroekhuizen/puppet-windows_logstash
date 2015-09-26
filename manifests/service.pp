@@ -8,7 +8,7 @@ class windows_logstash::service {
     provider => 'chocolatey',
   }
 
-  # Settings for all execs
+  # Settings for all nssm execs
   Exec { 
     path    => 'C:/ProgramData/chocolatey/bin',
     unless  => "C:\\Windows\\System32\\cmd.exe /C sc query Logstash",
