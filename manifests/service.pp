@@ -23,6 +23,7 @@ class windows_logstash::service {
   # Set stdout file
   exec { 'Logstash stdout':
     command => 'nssm.exe set Logstash AppStdout C:/ProgramData/logstash-1.4.2/nssm/stdout.log',
+    require => Exec[ 'Logstash as a service' ]
   }
 
   # Start service Logstash
