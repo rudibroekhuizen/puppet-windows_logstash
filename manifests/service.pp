@@ -2,7 +2,7 @@
 #
 class windows_logstash::service {
 
-  stage {'post':
+  stage { 'post':
   }
 
   Stage[ 'main' ] -> Stage[ 'post' ]
