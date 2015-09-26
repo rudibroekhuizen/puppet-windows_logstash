@@ -2,6 +2,11 @@
 #
 class windows_logstash::service {
 
+  stage {'post':
+  }
+
+  Stage[ 'main' ] -> Stage[ 'post' ]
+  
   # Install Non-Sucking Service Manager
   package { nssm:
     ensure   => installed,
@@ -25,7 +30,8 @@ class windows_logstash::service {
   # Start service Logstash
   service { 'Logstash':
     ensure  => running,
-    require => [Exec[ 'Logstash as a service' ], Exec[ 'Logstash stdout' ]]
+    #require => [Exec[ 'Logstash as a service' ], Exec[ 'Logstash stdout' ]]
+    stage    => 'post',
   }
   
 }
