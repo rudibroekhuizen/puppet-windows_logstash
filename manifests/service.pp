@@ -15,7 +15,7 @@ class windows_logstash::service {
     require => Package[ 'nssm' ]
   }
   
-  # Set stdout file
+  # Set nssm Logstash service stdout file
   exec { 'Logstash stdout':
     command => 'C:/ProgramData/chocolatey/bin/nssm.exe set Logstash AppStdout C:/ProgramData/logstash-1.4.2/nssm/stdout.log',
     unless  => "C:\\Windows\\System32\\cmd.exe /C sc query Logstash",
