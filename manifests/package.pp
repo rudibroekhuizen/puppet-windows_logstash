@@ -9,9 +9,16 @@ class windows_logstash::package {
   }
 
   # Set JAVA_HOME
-  windows_env { 'JAVA_HOME=%ProgramFiles%\Java\jre7':
-    type => REG_EXPAND_SZ,
+  windows::environment { 'JAVA_HOME':
+    value => 'C:\Program Files\Java\jre7'
   }
+  
+  #registry::value { 'JAVA_HOME':
+  #  key   => 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
+  #  value => 'JAVA_HOME',
+  #  type  => 'expand',
+  #  data  => '%ProgramFiles%\Java\jre7',
+  #}
   
   # Download logstash using opentable/download_file module
   download_file { 'logstash-1.4.2.zip' :
