@@ -30,7 +30,7 @@ class windows_logstash::service {
   # Start service Logstash
   service { 'Logstash':
     ensure  => running,
-    require => Exec[ 'Logstash as a service' ]
+    require => [Exec[ 'Logstash as a service', Exec[ 'Logstash stdout' ]]
   }
   
 }
