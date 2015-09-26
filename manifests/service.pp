@@ -8,12 +8,6 @@ class windows_logstash::service {
     provider => 'chocolatey',
   }
 
-  # Settings for all nssm execs
-  #Exec { 
-  #  path    => 'C:/ProgramData/chocolatey/bin',
-  #  require => Package[ 'nssm' ]
-  #}
-
   # Use nssm to create Logstash service  
   exec { 'Logstash as a service':
     command => 'C:/ProgramData/chocolatey/bin/nssm.exe install Logstash C:/ProgramData/logstash-1.4.2/bin/logstash.bat agent -f ../conf.d',
