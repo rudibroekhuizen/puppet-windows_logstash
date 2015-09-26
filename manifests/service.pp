@@ -19,6 +19,11 @@ class windows_logstash::service {
   exec { 'Logstash as a service':
     command => 'nssm.exe install Logstash C:/ProgramData/logstash-1.4.2/bin/logstash.bat agent -f ../conf.d',
   }
+  
+  # Set stdout file
+  exec { 'Logstash as a service':
+    command => 'nssm.exe set Logstash AppStdout C:/ProgramData/logstash-1.4.2/nssm/stdout.log',
+  }
 
   # Start service Logstash
   service { 'Logstash':
